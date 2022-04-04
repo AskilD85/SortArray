@@ -11,7 +11,30 @@ const list = [
 ];
 
  function sortArray(arr) {
-    return [...arr].sort( (a,b) =>  (a.ip === b.ip ?  (a.name < b.name ? 1 : -1) : (a.ip > b.ip ? 1 : -1 ) ))
+
+      function byField(field1, field2) {
+            return function (a,b) {
+                /* если значения IP равны*/
+            if (a[field1] === b[field1]) {
+                /**проверяеv по name */
+                    if (a[field2] < b[field2]) {
+                        return 1
+                    } else {
+                        return -1
+                    }
+            }  else  {
+            /**если значения IP не равны 
+                проверяем только по IP  */ 
+                    if (a[field1] > b[field1]) {
+                        return 1
+                    } else {
+                        return -1
+                    } 
+            }
+            }
+        }
+        
+    return [...arr].sort( byField('ip','name'))
  }
 
  const expected = sortArray(list)
