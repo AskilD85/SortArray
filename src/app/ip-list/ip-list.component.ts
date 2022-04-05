@@ -19,7 +19,7 @@ interface Route {
 
 
 
-export class IpListComponent implements OnInit, AfterViewInit {
+export class IpListComponent implements AfterViewInit {
   ipList: Route[] = [
     { uuid:'vsdvdv1', address: '3.3.3.3', mask: '255.255.255.0', gateway: '10.0.0.1', interface: 'Подключение Ethernet'  },
     { uuid: 'vsdvdv2', address: '4.3.3.3', mask: '255.255.255.0', gateway: '10.0.0.1', interface: 'Домашняя сеть' },
@@ -40,7 +40,4 @@ export class IpListComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  ngOnInit(): void {
-    console.log(this.dataSource);
-  }
 }
